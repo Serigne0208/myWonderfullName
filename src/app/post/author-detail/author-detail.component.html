@@ -1,0 +1,15 @@
+<div *ngIf="author">
+    <h2>{{ author.name }}</h2>
+    <img [src]="author.photo" alt="{{ author.name }}" />
+    <p>{{ author.pseudo.join(', ') }}</p>
+  
+    <!-- Affichage de l'adresse de l'auteur -->
+    <div>
+      <p><strong>Adresse:</strong></p>
+      <p>{{ author.address.number }} {{ author.address.street }}</p>
+      <p>{{ author.address.postalCode }} {{ author.address.city }}</p>
+      <p>{{ author.address.country }}</p>
+    </div>
+  </div>
+  
+  
