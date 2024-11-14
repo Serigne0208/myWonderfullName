@@ -1,0 +1,5 @@
+<div class="input-container">
+    <input [(ngModel)]="value" type="text" placeholder="Saisir du texte" />
+    <button *ngIf="value" class="reset-btn" (click)="resetValue()">&#10006;</button>  <!-- La croix (X) -->
+  </div>
+  

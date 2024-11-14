@@ -1,0 +1,22 @@
+/* src/app/reset-input/reset-input.component.scss */
+.input-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .reset-btn {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    font-size: 24px;  /* Augmenter la taille de la croix */
+    cursor: pointer;
+    color: red;  /* Ajouter une couleur visible */
+  }
+  
+  .reset-btn:hover {
+    color: darkred;  /* Changer la couleur au survol */
+  }
+  
