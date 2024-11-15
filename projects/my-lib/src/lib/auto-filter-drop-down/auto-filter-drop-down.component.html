@@ -1,0 +1,18 @@
+<div libClickOutside (libClickOutside)="openned.set(false)">
+    <input
+      [placeholder]="placeholder()"
+      type="text"
+      [(ngModel)]="searchValue"
+      (ngModelChange)="openned.set(true)"
+      (focus)="openned.set(true)"
+    />
+    @if (openned()) {
+    <ul>
+      @for (option of options() | filteredList: searchValue(); track option) {
+      <li [libBoldSearchText]="searchValue()" (click)="onOptionClick(option)">
+        {{ option }}
+      </li>
+      }
+    </ul>
+    }
+  </div>

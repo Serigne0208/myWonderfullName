@@ -6,6 +6,10 @@
       [routerLink]="['/posts', post.id]" 
       [disabled]="post.id === selectedPostId">
       Voir le détail
-    </button>
+    </button> 
+       
+  <button (click)="selectPosts(post)">Sélectionner le post</button>
+     
   </div>
   
+ 

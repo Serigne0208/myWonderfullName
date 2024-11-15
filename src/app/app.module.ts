@@ -13,6 +13,7 @@ import { MyLibService } from 'my-lib';
 import { AddressInputComponent } from '../../projects/my-lib/src/lib/address-input/address-input.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +22,10 @@ import { AddressInputComponent } from '../../projects/my-lib/src/lib/address-inp
     DetailComponent,
     AuthorDetailComponent,
     ResetInputComponent,
+    // CustomInputComponent,
+    // DirectivesComponent,
+    // PipesComponent,
+    // AutoFilterDropDownComponent,
    // AddressInputComponent,
 
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { PostService } from '../post.service';
 import { Post } from '../models';
 
@@ -17,6 +17,8 @@ export class ListComponent implements OnInit {
   // ]; 
   selectedPostId: number | null = null;
 
+  selectedPosts = signal<Array<Post>>([]);
+  
   constructor(private postService: PostService) {}
 
   ngOnInit(): void {
@@ -28,4 +30,25 @@ export class ListComponent implements OnInit {
   selectPost(postId: number): void {
     this.selectedPostId = postId;
   }
+
+//  // Fonction pour sélectionner un post
+//   selectPosts(post: Post) {
+//     if (!this.selectedPosts().includes(post)) {
+//       this.selectedPosts.set([...this.selectedPosts(), post]);
+//       console.log(this.selectedPosts.length)
+//     }
+//   }
+
+  public selectPosts(post: Post): void {
+    this.selectedPosts.update((oldPosts) => [...new Set([...oldPosts, post])]);
+  }
+
+  // Calculer le nombre d'auteurs distincts
+  get uniqueAuthorsCount() {
+    const authors = this.selectedPosts().map(post => post.author);
+    console.log(new Set(authors).size);
+    return new Set(authors).size;
+   
+  }
+  
 }
