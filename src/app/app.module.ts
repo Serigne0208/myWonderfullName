@@ -10,7 +10,10 @@ import { AuthorDetailComponent } from './post/author-detail/author-detail.compon
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { ResetInputComponent } from './reset-input/reset-input.component';
 import { MyLibService } from 'my-lib';
-import { AddressInputComponent } from '../../projects/my-lib/src/lib/address-input/address-input.component';
+
+import { LoggerModule } from '../../projects/my-lib/src/lib/logger.module';
+import { LoggerLevel } from '../../projects/my-lib/src/lib/logger.service';
+import { NgOptimizedImage } from '@angular/common';
 
 
 
@@ -22,6 +25,7 @@ import { AddressInputComponent } from '../../projects/my-lib/src/lib/address-inp
     DetailComponent,
     AuthorDetailComponent,
     ResetInputComponent,
+  //  CardComponent,
     // CustomInputComponent,
     // DirectivesComponent,
     // PipesComponent,
@@ -35,9 +39,12 @@ import { AddressInputComponent } from '../../projects/my-lib/src/lib/address-inp
     BrowserModule,
     AppRoutingModule,
   //  MyLibService,
-    FormsModule
+    LoggerModule.forRoot(LoggerLevel.DEBUG) ,// Configurer le niveau de log par défaut
+    FormsModule,
+    //NgOptimizedImage,
   ],
   providers: [provideHttpClient(withFetch())],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+ 
 })
 export class AppModule { }

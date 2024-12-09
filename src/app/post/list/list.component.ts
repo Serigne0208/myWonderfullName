@@ -1,6 +1,7 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { PostService } from '../post.service';
 import { Post } from '../models';
+import { LoggerLevel, LoggerService } from '../../../../projects/my-lib/src/lib/logger.service';
 
 
 @Component({
@@ -19,12 +20,19 @@ export class ListComponent implements OnInit {
 
   selectedPosts = signal<Array<Post>>([]);
   
-  constructor(private postService: PostService) {}
+  constructor(private postService: PostService,private logger: LoggerService) {
+    // Modifier le niveau de log pour ce composant
+    this.logger.setLogLevel(LoggerLevel.WARN);
+  }
 
   ngOnInit(): void {
      this.postService.getPosts().subscribe((data) => {
        this.posts = data;
      });
+
+    this.logger.log(LoggerLevel.INFO, 'Ceci est un message INFO.'); 
+    this.logger.log(LoggerLevel.WARN, 'Ceci est un message WARN.');
+    this.logger.log(LoggerLevel.ERROR, 'Ceci est un message ERROR.');
   }
 
   selectPost(postId: number): void {
@@ -50,5 +58,5 @@ export class ListComponent implements OnInit {
     return new Set(authors).size;
    
   }
-  
+
 }
